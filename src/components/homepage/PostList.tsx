@@ -63,10 +63,10 @@ const PostList: React.FC = () => {
                     <div key={post.id} className="col-md-4 mb-4">
                         <div className="card">
                             <img src={post.image} className="card-img-top" alt={post.title} />
-                            <div className="card-body text-center">
+                            <div className="card-body d-flex flex-column text-center">
                                 <h5 className="card-title">{post.title}</h5>
                                 <p className="card-text">Ngày đăng: {post.date}</p>
-                                <button className="btn btn-primary">Chi tiết</button>
+                                <button className="btn btn-dark text-white w-100 mt-auto">Chi tiết</button>
                             </div>
                         </div>
                     </div>
