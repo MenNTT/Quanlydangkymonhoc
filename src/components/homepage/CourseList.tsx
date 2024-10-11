@@ -21,6 +21,7 @@ const coursesData: Course[] = [
 ];
 
 const CourseList: React.FC = () => {
+
     const navigate = useNavigate();
     const [visibleCourses, setVisibleCourses] = useState<number>(6);
 
