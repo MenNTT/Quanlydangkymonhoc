@@ -48,13 +48,13 @@ const PostList: React.FC = () => {
             <div className="d-flex justify-content-center mb-3">
                 <ul className="nav nav-tabs">
                     <li className="nav-item">
-                        <button className={`nav-link ${activeTab === 'thong-tin' ? 'active' : ''}`} onClick={() => handleTabClick('thong-tin')}>Thông tin</button>
+                        <button className={`nav-link ${activeTab === 'thong-tin' ? 'bg-dark text-white' : ''}`} onClick={() => handleTabClick('thong-tin')}>Thông tin</button>
                     </li>
                     <li className="nav-item">
-                        <button className={`nav-link ${activeTab === 'thong-bao' ? 'active' : ''}`} onClick={() => handleTabClick('thong-bao')}>Thông báo</button>
+                        <button className={`nav-link ${activeTab === 'thong-bao' ? 'bg-dark text-white' : ''}`} onClick={() => handleTabClick('thong-bao')}>Thông báo</button>
                     </li>
                     <li className="nav-item">
-                        <button className={`nav-link ${activeTab === 'tin-tuc' ? 'active' : ''}`} onClick={() => handleTabClick('tin-tuc')}>Tin tức</button>
+                        <button className={`nav-link ${activeTab === 'tin-tuc' ? 'bg-dark text-white' : ''}`} onClick={() => handleTabClick('tin-tuc')}>Tin tức</button>
                     </li>
                 </ul>
             </div>
