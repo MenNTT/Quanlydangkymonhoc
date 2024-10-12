@@ -10,8 +10,11 @@ const Footer: React.FC = () => {
                     <div className="col-md-4 text-center">
                         <img src="https://via.placeholder.com/150" alt="Logo Trung tâm" className="mb-3" />
                     </div>
-                    <div className="col-md-4 text-center">
+                    <div className="col-md-4 text-start">
                         <h5 className="mb-0">Thông tin liên hệ</h5>
+                    </div>
+                    <div className='col-md-4 text-start'>
+                        <h5 className='mb-0'>Chính sách và quy định chung</h5>
                     </div>
                 </div>
                 <div className="row">
@@ -31,17 +34,30 @@ const Footer: React.FC = () => {
                                 <strong>Mạng xã hội:</strong>
                                 <ul className="list-inline">
                                     <li className="list-inline-item">
-                                        <a href="#" className="text-white">Facebook</a>
+                                        <a href="#" className="text-white text-decoration-none">
+                                            <i className="bi bi-facebook me-2"></i>Facebook
+                                        </a>
                                     </li>
                                     <li className="list-inline-item">
-                                        <a href="#" className="text-white">Instagram</a>
+                                        <a href="#" className="text-white text-decoration-none">
+                                            <i className="bi bi-instagram me-2"></i>Instagram
+                                        </a>
                                     </li>
                                     <li className="list-inline-item">
-                                        <a href="#" className="text-white">LinkedIn</a>
+                                        <a href="#" className="text-white text-decoration-none">
+                                            <i className="bi bi-linkedin me-2"></i>LinkedIn
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
                             <li><strong>Địa chỉ:</strong> 123 Đường ABC, Quận XYZ, Thành phố HCM</li>
+                        </ul>
+                    </div>
+                    <div className='col-md-4'>
+                        <ul className='list-unstyled'>
+                            <li><i className="bi bi-check-circle-fill me-2"></i>Điều khoản dịch vụ</li>
+                            <li><i className="bi bi-check-circle-fill me-2"></i>Chính sách bảo mật</li>
+                            <li>Số ĐKKD xxxxxx cấp ngày xx/xx/xxxx</li>
                         </ul>
                     </div>
                 </div>

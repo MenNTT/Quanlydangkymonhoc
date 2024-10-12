@@ -1,70 +1,75 @@
-import React from 'react';
+import React, {useState} from 'react';
+import '../../../styles/NavbarComponent.css';
+import TrainingProgramsDropdown from "../training_program_dropdown/TrainingProgramsDropdown.tsx";
+import EnrollmentDatesDropdown from "../enrollmentdate_dropdown/EnrollmentDatesDropdown.tsx";
+import ServiceListDropdown from "../service_list_dropdown/ServiceListDropdown.tsx";
+import NewsDropdown from "../news_dropdown/NewsDropdown.tsx";
 
 const NavbarComponent: React.FC = () => {
+    const [CoursesIsDropdownOpen, CoursesSetDropdownOpen] = useState(false);
+    const [enrollIsDropdownOpen, enrollSetDropdownOpen] = useState(false);
+    const [serviceIsDropdownOpen, serviceSetDropdownOpen] = useState(false);
+    const [newsIsDropdownOpen, newsSetDropdownOpen] = useState(false);
+
+    const handleMouseCourseEnter = () => { CoursesSetDropdownOpen(true); };
+    const handleMouseCourseLeave = () => { CoursesSetDropdownOpen(false); };
+
+    const handleMouseEnrollEnter = () => { enrollSetDropdownOpen(true); };
+    const handleMouseEnrollLeave = () => { enrollSetDropdownOpen(false); };
+
+    const handleMouseServiceEnter = () => { serviceSetDropdownOpen(true); };
+    const handleMouseServiceLeave = () => { serviceSetDropdownOpen(false); };
+
+    const handleMouseNewsEnter = () => { newsSetDropdownOpen(true); };
+    const handleMouseNewsLeave = () => { newsSetDropdownOpen(false); };
+
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-            <div className="container-fluid">
-                {/* Logo, không bị dồn sát mép */}
-                <a className="navbar-brand" href="#" style={{paddingLeft: '20px'}}>Navbar</a>
+        <nav className="navbar py-1 navbar-component">
+            <div className="container d-flex align-items-center mt-0">
+                {/* Home button with icon */}
 
-                {/* Nút cho responsive */}
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-
-                {/* Các mục navbar, căn giữa và đẩy sang phải */}
-                <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0" style={{marginRight: '50px'}}>
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                Giới thiệu
-                            </a>
-                            <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#">Lịch sử trung tâm</a></li>
-                                <li><a className="dropdown-item" href="#">Danh sách đối tác</a></li>
-                            </ul>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Đăng ký</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Giáo trình</a>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                Tin tức
-                            </a>
-                            <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#">Kỳ thi</a></li>
-                                <li><a className="dropdown-item" href="#">Thông báo điểm</a></li>
-                                <li><a className="dropdown-item" href="#">Học viên</a></li>
-                                <li><a className="dropdown-item" href="#">Sinh viên</a></li>
-                                <li><a className="dropdown-item" href="#">Hoạt động</a></li>
-                            </ul>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                Tra cứu
-                            </a>
-                            <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#">Điểm thi</a></li>
-                                <li><a className="dropdown-item" href="#">Biểu mẫu</a></li>
-                                <li><a className="dropdown-item" href="#">Lịch thi</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                {/* Menu Items */}
+                <ul className="nav d-flex justify-content-start w-100 me-3"> {/* Adjust this value as needed */}
+                    <li className="nav-item">
+                        <a href="/" className="text-white text-decoration-none">
+                            <i className="bi bi-house-fill" style={{fontSize: '1.5rem', color: 'white'}}></i>
+                        </a>
+                    </li>
+                    <li className="nav-item" onMouseEnter={handleMouseEnrollEnter} onMouseLeave={handleMouseEnrollLeave}>
+                        <a href="/lich-su-khai-giang" className="nav-link text-white">
+                            Lịch khai giảng
+                        </a>
+                        <EnrollmentDatesDropdown isOpen={enrollIsDropdownOpen} onClose={handleMouseEnrollLeave} />
+                    </li>
+                    <li className="nav-item" onMouseEnter={handleMouseCourseEnter} onMouseLeave={handleMouseCourseLeave}>
+                        <a href="/chuong-trinh-dao-tao" className="nav-link text-white">
+                            Chương trình đào tạo
+                        </a>
+                        <TrainingProgramsDropdown isOpen={CoursesIsDropdownOpen} onClose={handleMouseCourseLeave} />
+                    </li>
+                    <li className="nav-item" onMouseEnter={handleMouseServiceEnter} onMouseLeave={handleMouseServiceLeave}>
+                        <a href="/dich-vu" className="nav-link text-white">
+                            Dịch vụ
+                        </a>
+                        <ServiceListDropdown isOpen={serviceIsDropdownOpen} onClose={handleMouseServiceLeave} />
+                    </li>
+                    <li className="nav-item" onMouseEnter={handleMouseNewsEnter} onMouseLeave={handleMouseNewsLeave}>
+                        <a href="/tin-tuc" className="nav-link text-white">
+                            Tin tức
+                        </a>
+                        <NewsDropdown isOpen={newsIsDropdownOpen} onClose={handleMouseNewsLeave} />
+                    </li>
+                    <li className="nav-item">
+                        <a href="/huong-dan-thanh-toan" className="nav-link text-white">
+                            Hướng dẫn thanh toán
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="/lien-he" className="nav-link text-white">
+                            Liên hệ
+                        </a>
+                    </li>
+                </ul>
             </div>
         </nav>
     );

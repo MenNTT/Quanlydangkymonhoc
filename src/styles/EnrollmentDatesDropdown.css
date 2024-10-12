@@ -1,0 +1,23 @@
+/* EnrollmentDatesDropdown.css */
+.enrollment-date-column {
+    flex-grow: 1; /* Cho phép cột mở rộng nếu cần */
+    min-width: 150px; /* Đặt độ rộng tối thiểu để cột không quá nhỏ */
+    max-width: 300px; /* Đặt độ rộng tối đa để tránh quá lớn */
+    padding: 0 10px;
+}
+
+.enrollment-date-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.enrollment-date-item i {
+    margin-right: 10px;
+}
+
+.enrollment-date-text {
+    white-space: nowrap; /* Không cho phép xuống dòng */
+    overflow: hidden; /* Ẩn phần tràn ra */
+    text-overflow: ellipsis; /* Hiển thị dấu "..." nếu vượt quá chiều rộng */
+}

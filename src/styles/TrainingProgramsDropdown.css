@@ -1,0 +1,9 @@
+.dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    background-color: white; /* Màu nền cho dropdown */
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
+    font-size: small;
+}
