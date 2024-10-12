@@ -58,10 +58,10 @@ const CourseDetail: React.FC = () => {
                                     <table className="table table-bordered">
                                         <thead className="thead-dark">
                                         <tr>
-                                            <th>Ca học</th>
-                                            <th>Thời gian</th>
-                                            <th>Ngày khai giảng</th>
-                                            <th>Địa điểm</th>
+                                            <th className="bg-dark text-white">Ca học</th>
+                                            <th className="bg-dark text-white">Thời gian</th>
+                                            <th className="bg-dark text-white">Ngày khai giảng</th>
+                                            <th className="bg-dark text-white">Địa điểm</th>
                                         </tr>
                                         </thead>
                                         <tbody>
