@@ -3,6 +3,8 @@ import HomePage from "./components/homepage/Homepage.tsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React from "react";
 import CourseDetail from "./components/coursedetail/CourseDetail.tsx";
+import Login from "./components/authenpage/Login.tsx";
+import Register from "./components/authenpage/Register.tsx";
 
 const App: React.FC = () => {
 
@@ -11,6 +13,8 @@ const App: React.FC = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/course-detail" element={<CourseDetail />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
             </Routes>
         </Router>
     );

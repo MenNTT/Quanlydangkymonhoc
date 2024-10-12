@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Header: React.FC = () => {
+
     return (
         <header className="py-3 bg-light shadow-sm">
             <div className="container d-flex justify-content-between align-items-center">
@@ -42,7 +43,7 @@ const Header: React.FC = () => {
                         </a>
                     </div>
                     <div>
-                        <a href="/account" className="text-dark text-decoration-none">
+                        <a href="/login" className="text-dark text-decoration-none">
                             <i className="bi bi-person"></i> Account
                         </a>
                     </div>
