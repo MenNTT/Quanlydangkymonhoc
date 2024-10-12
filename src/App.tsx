@@ -1,22 +1,19 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import HomePage from "./components/homepage/Homepage.tsx";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
-import CourseDetail from "./components/coursedetail/CourseDetail.tsx";
-import Login from "./components/authenpage/Login.tsx";
-import Register from "./components/authenpage/Register.tsx";
+import Header from "./components/containers/header/Header.tsx";
+import Footer from "./components/containers/footer/Footer.tsx";
+import RouteComponent from "./Routes/RouteComponent.tsx";
+import NavbarComponent from "./components/containers/navbar/NavbarComponent.tsx";
 
 const App: React.FC = () => {
 
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/course-detail" element={<CourseDetail />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-            </Routes>
-        </Router>
+        <>
+            <Header />
+            <NavbarComponent />
+            <RouteComponent />
+            <Footer />
+        </>
     );
 
 };
