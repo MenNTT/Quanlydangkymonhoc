@@ -25,16 +25,12 @@ const TrainingProgramsDropdown: React.FC<{ isOpen: boolean; onClose: () => void 
         setHoveredProgram(program);
     };
 
-    // Hàm xử lý rời chuột cho chương trình
-    const handleMouseLeaveProgram = () => {
-        setHoveredProgram(null);
-    };
-
-    // Hàm xử lý mouse leave cho dropdown
+    // Hàm xử lý rời chuột
     const handleMouseLeaveDropdown = (event: React.MouseEvent) => {
         // Kiểm tra nếu chuột không ở trong dropdown thì mới gọi onClose
         if (dropdownRef.current && !dropdownRef.current.contains(event.relatedTarget as Node)) {
-            onClose();
+            setHoveredProgram(null); // Đặt hoveredProgram về null khi chuột ra ngoài
+            onClose(); // Gọi onClose
         }
     };
 
@@ -55,8 +51,7 @@ const TrainingProgramsDropdown: React.FC<{ isOpen: boolean; onClose: () => void 
                             <li
                                 key={index}
                                 className="d-flex align-items-center mb-2"
-                                onMouseEnter={() => handleMouseEnterProgram(program)}
-                                onMouseLeave={handleMouseLeaveProgram}
+                                onMouseEnter={() => handleMouseEnterProgram(program)} // Hover vào chương trình
                             >
                                 <i className="bi bi-book" style={{ fontSize: '1rem', marginRight: '10px' }}></i>
                                 <span className="me-auto pe-2 program-name">{program}</span>
@@ -69,8 +64,7 @@ const TrainingProgramsDropdown: React.FC<{ isOpen: boolean; onClose: () => void 
                 {/* Phần bên phải */}
                 <div
                     className="flex-fill"
-                    onMouseEnter={() => hoveredProgram && setHoveredProgram(hoveredProgram)} // Giữ hoveredProgram khi chuột di chuyển vào
-                    onMouseLeave={handleMouseLeaveDropdown} // Để giữ dropdown mở
+                    onMouseLeave={handleMouseLeaveDropdown} // Kiểm tra khi chuột ra khỏi phần danh sách khóa học
                 >
                     {hoveredProgram ? (
                         <>
