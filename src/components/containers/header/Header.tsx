@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import '../../../styles/Header.css';
+import { useUser } from '../../contents/UserContext';
 
 const Header: React.FC = () => {
+    const { user, logout } = useUser();
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    const handleDropdownToggle = () => {
+        setShowDropdown(!showDropdown);
+    };
 
     return (
         <header className="py-3 bg-light shadow-sm">
@@ -30,8 +38,8 @@ const Header: React.FC = () => {
                             className="input-group-text bg-white border-start-0 border-1"
                             id="search-icon"
                         >
-              <i className="bi bi-search"></i>
-            </span>
+                            <i className="bi bi-search"></i>
+                        </span>
                     </div>
                 </div>
 
@@ -42,10 +50,45 @@ const Header: React.FC = () => {
                             <i className="bi bi-cart3"></i> Cart
                         </a>
                     </div>
-                    <div>
-                        <a href="/login" className="text-dark text-decoration-none">
-                            <i className="bi bi-person"></i> Account
-                        </a>
+                    <div className="position-relative">
+                        {user ? (
+                            <div className="dropdown">
+                                <button
+                                    className="btn btn-light d-flex align-items-center"
+                                    onClick={handleDropdownToggle}
+                                >
+                                    <i className="bi bi-person"></i>
+                                    <span className="ms-2">{user.email}</span>
+                                    <i className="bi bi-caret-down-fill ms-2"></i>
+                                </button>
+                                {showDropdown && (
+                                    <ul className="dropdown-menu dropdown-menu-end show">
+                                        <li>
+                                            <a href="/profile" className="dropdown-item">
+                                                <i className="bi bi-person-circle me-2"></i> Xem hồ sơ
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/schedule" className="dropdown-item">
+                                                <i className="bi bi-calendar-event me-2"></i> Lịch học
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <button
+                                                className="dropdown-item"
+                                                onClick={logout}
+                                            >
+                                                <i className="bi bi-box-arrow-right me-2"></i> Đăng xuất
+                                            </button>
+                                        </li>
+                                    </ul>
+                                )}
+                            </div>
+                        ) : (
+                            <a href="/login" className="text-dark text-decoration-none">
+                                <i className="bi bi-person"></i> Đăng nhập
+                            </a>
+                        )}
                     </div>
                 </div>
             </div>

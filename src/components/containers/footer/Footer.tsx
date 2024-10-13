@@ -1,20 +1,23 @@
 // Footer.tsx
 import React from 'react';
+import '../../../styles/Footer.css';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-dark text-white py-4 mt-3">
+        <footer className="text-white py-4 mt-3 footer-container">
             <div className="container">
-                <div className="row align-items-center"> {/* Đổi từ align-items-end thành align-items-center */}
+                <div className="row align-items-end"> {/* Đổi từ align-items-end thành align-items-center */}
                     {/* Hàng đầu tiên: Logo và Thông tin liên hệ */}
                     <div className="col-md-4 text-center">
                         <img src="https://via.placeholder.com/150" alt="Logo Trung tâm" className="mb-3" />
                     </div>
                     <div className="col-md-4 text-start">
                         <h5 className="mb-0">Thông tin liên hệ</h5>
+                        <hr className='bg-dark'></hr>
                     </div>
                     <div className='col-md-4 text-start'>
                         <h5 className='mb-0'>Chính sách và quy định chung</h5>
+                        <hr className='bg-dark'></hr>
                     </div>
                 </div>
                 <div className="row">
