@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import {useUser} from "../contents/UserContext.tsx";
+import {useNavigate} from "react-router-dom";
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { login } = useUser();
+    const navigate = useNavigate();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle login logic here
-        console.log('Email:', email);
-        console.log('Password:', password);
+        login(email); // Đăng nhập giả lập với email
+        navigate('/'); // Chuyển hướng về trang chủ sau khi đăng nhập
     };
 
     return (
