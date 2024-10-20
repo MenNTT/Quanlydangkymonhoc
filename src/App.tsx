@@ -1,20 +1,20 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
-import Header from "./components/containers/header/Header.tsx";
-import Footer from "./components/containers/footer/Footer.tsx";
+import './App.css';
 import RouteComponent from "./Routes/RouteComponent.tsx";
-import NavbarComponent from "./components/containers/navbar/NavbarComponent.tsx";
 import {UserProvider} from "./components/contents/UserContext.tsx";
+import {BrowserRouter as Router} from "react-router-dom";
 
 const App: React.FC = () => {
 
     return (
-        <UserProvider>
-            <Header />
-            <NavbarComponent />
-            <RouteComponent />
-            <Footer />
-        </UserProvider>
+        <div className='father-container'>
+            <UserProvider>
+                <Router>
+                    <RouteComponent />
+                </Router>
+            </UserProvider>
+        </div>
     );
 
 };

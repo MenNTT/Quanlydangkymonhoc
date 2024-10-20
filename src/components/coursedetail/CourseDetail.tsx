@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 
 // Dữ liệu khóa học mới nhất (danh sách bên phải)
 const latestCourses = [
@@ -10,6 +11,7 @@ const latestCourses = [
 ];
 
 const CourseDetail: React.FC = () => {
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState<string>('lich-khai-giang');
 
     const handleTabClick = (tab: string) => {
@@ -73,7 +75,10 @@ const CourseDetail: React.FC = () => {
                                             <td>TP. Hồ Chí Minh</td>
                                             <td className="text-center">
                                                 <div className="d-flex justify-content-center">
-                                                    <button className="btn btn-success btn-sm">Đăng ký</button> {/* Nút "Đăng ký" */}
+                                                    <button className="btn btn-success btn-sm"
+                                                            onClick={() => navigate('/payment')}>
+                                                        Đăng ký
+                                                    </button> {/* Nút "Đăng ký" */}
                                                 </div>
                                             </td>
                                         </tr>
@@ -84,7 +89,10 @@ const CourseDetail: React.FC = () => {
                                             <td>Hà Nội</td>
                                             <td className="text-center">
                                                 <div className="d-flex justify-content-center">
-                                                    <button className="btn btn-success btn-sm">Đăng ký</button>
+                                                    <button className="btn btn-success btn-sm"
+                                                            onClick={() => navigate('/payment')}>
+                                                        Đăng ký
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -95,7 +103,10 @@ const CourseDetail: React.FC = () => {
                                             <td>Đà Nẵng</td>
                                             <td className="text-center">
                                                 <div className="d-flex justify-content-center">
-                                                    <button className="btn btn-success btn-sm">Đăng ký</button>
+                                                    <button className="btn btn-success btn-sm"
+                                                            onClick={() => navigate('/payment')}>
+                                                        Đăng ký
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>

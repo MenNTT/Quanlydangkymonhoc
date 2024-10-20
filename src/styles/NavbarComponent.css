@@ -5,3 +5,25 @@
     padding: 0; /* Giảm padding để navbar nhỏ lại */
     line-height: 1.2; /* Giảm khoảng cách giữa các dòng */
 }
+
+.custom-toggler {
+    border: none; /* Remove default border */
+    outline: none;
+}
+
+.custom-toggler .toggler-icon {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: white; /* Set the color of the lines to white */
+    margin: 5px 0; /* Space between the lines */
+    transition: background-color 0.2s ease;
+}
+
+.custom-toggler:focus {
+    outline: none; /* Remove focus outline */
+}
+
+.navbar-toggler {
+    border-color: transparent;
+}
