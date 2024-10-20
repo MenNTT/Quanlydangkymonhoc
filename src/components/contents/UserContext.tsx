@@ -1,8 +1,24 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface UserContextType {
-    user: { email: string } | null;
-    login: (email: string) => void;
+    user: {
+        email: string;
+        fullName: string;
+        idNumber: string;
+        phone: string;
+        address: string;
+        companyName: string;
+        companyAddress: string;
+    } | null;
+    login: (
+        email: string,
+        fullName: string,
+        idNumber: string,
+        phone: string,
+        address: string,
+        companyName: string,
+        companyAddress: string
+    ) => void;
     logout: () => void;
 }
 
@@ -17,9 +33,16 @@ export const useUser = () => {
 };
 
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [user, setUser] = useState<{ email: string } | null>(null);
+    const [user, setUser] = useState<{
+        email: string;
+        fullName: string;
+        idNumber: string;
+        phone: string;
+        address: string;
+        companyName: string;
+        companyAddress: string;
+    } | null>(null);
 
-    // Khôi phục trạng thái người dùng từ sessionStorage khi ứng dụng khởi động
     useEffect(() => {
         const storedUser = sessionStorage.getItem('user');
         if (storedUser) {
@@ -27,16 +50,22 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
     }, []);
 
-    const login = (email: string) => {
-        const userData = { email };
+    const login = (
+        email: string,
+        fullName: string,
+        idNumber: string,
+        phone: string,
+        address: string,
+        companyName: string,
+        companyAddress: string
+    ) => {
+        const userData = { email, fullName, idNumber, phone, address, companyName, companyAddress };
         setUser(userData);
-        // Lưu trạng thái người dùng vào sessionStorage
         sessionStorage.setItem('user', JSON.stringify(userData));
     };
 
     const logout = () => {
         setUser(null);
-        // Xóa trạng thái người dùng khỏi sessionStorage
         sessionStorage.removeItem('user');
     };
 
