@@ -150,7 +150,7 @@ const CourseList: React.FC = () => {
 
     return (
         <div className="container mt-4">
-            <h2 className="text-center">Chương trình đào tạo</h2>
+            <h2 className="text-center course-list-subject">Chương trình đào tạo</h2>
             <div className="text-center" style={{maxWidth: '600px', margin: '0 auto'}}>
                 <p>
                     Chương trình học đa dạng và thường xuyên cập nhật công nghệ mới.

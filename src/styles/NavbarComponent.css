@@ -1,13 +1,13 @@
 .navbar-component {
     background-color: #0A2647;
     font-size: small;
-    height: fit-content; /* Bạn có thể giữ lại thuộc tính này */
-    padding: 0; /* Giảm padding để navbar nhỏ lại */
-    line-height: 1.2; /* Giảm khoảng cách giữa các dòng */
+    height: fit-content;
+    padding: 0;
+    line-height: 1.2;
 }
 
 .custom-toggler {
-    border: none; /* Remove default border */
+    border: none;
     outline: none;
 }
 
@@ -15,15 +15,20 @@
     display: block;
     width: 30px;
     height: 3px;
-    background-color: white; /* Set the color of the lines to white */
-    margin: 5px 0; /* Space between the lines */
+    background-color: white;
+    margin: 5px 0;
     transition: background-color 0.2s ease;
 }
 
 .custom-toggler:focus {
-    outline: none; /* Remove focus outline */
+    outline: none;
 }
 
 .navbar-toggler {
     border-color: transparent;
+}
+
+/* Add spacing between nav items */
+.navbar-nav {
+    gap: 2rem; /* Adjust this value for the desired space */
 }
