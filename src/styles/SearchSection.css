@@ -1,0 +1,14 @@
+/* CSS bổ sung cho nút "Đăng ký ngay" */
+.btn-orange {
+    background-color: #ff8c00; /* Màu cam */
+    color: white;
+    border: none; /* Xóa viền nút */
+}
+
+.btn-orange:hover {
+    background-color: #e07c00; /* Màu cam tối hơn khi hover */
+}
+
+.rounded-pill {
+    border-radius: 50px; /* Bo tròn nhiều */
+}

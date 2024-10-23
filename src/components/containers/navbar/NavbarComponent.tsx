@@ -44,7 +44,7 @@ const NavbarComponent: React.FC = () => {
 
                 {/* Collapsible menu */}
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav d-flex justify-content-start w-100 me-3">
+                    <ul className="navbar-nav d-flex justify-content-center w-100 gap-4"> {/* Change here */}
                         <li className="nav-item">
                             <a href="/" className="text-white text-decoration-none">
                                 <i className="bi bi-house-fill" style={{ fontSize: '1.5rem', color: 'white' }}></i>

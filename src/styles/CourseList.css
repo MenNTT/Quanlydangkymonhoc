@@ -1,18 +1,30 @@
-/*.course-card {*/
-/*    position: relative;*/
-/*    overflow: hidden;*/
-/*    border: 1px solid #ddd;*/
-/*}*/
+/* Khi hover vào nút */
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: orange !important;
+    border-color: orange !important;
+    color: white !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
+}
 
-/*.course-card .card-text {*/
-/*    margin-bottom: 20px; !* Thêm khoảng cách giữa nội dung và nút *!*/
-/*}*/
+/* Khi nhấn vào nút (active) */
+.btn-outline-primary.active {
+    background-color: orange !important;
+    border-color: orange !important;
+    color: white !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Đổ bóng mạnh hơn khi active */
+}
 
-/*.course-detail-btn {*/
-/*    position: absolute;*/
-/*    bottom: 0;*/
-/*    left: 0;*/
-/*    right: 0;*/
-/*    width: 100%;*/
-/*    border-radius: 0;*/
-/*}*/
+/* Đổ bóng mặc định khi không hover hoặc nhấn */
+.btn-outline-primary {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ mặc định */
+}
+
+.course-list-subject::after {
+    content: '';
+    display: block;
+    width: 80px; /* Độ dài của gạch ngang */
+    height: 3px; /* Độ dày của gạch ngang */
+    background-color: #007bff; /* Màu của gạch ngang (có thể chỉnh theo màu của bạn) */
+    margin: 10px auto 0; /* Khoảng cách giữa chữ và gạch ngang */
+}

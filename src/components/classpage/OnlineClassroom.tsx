@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import '../../styles/OnlineClassroom.css';
 
 const OnlineClassroom: React.FC = () => {
