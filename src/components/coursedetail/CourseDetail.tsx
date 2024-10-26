@@ -289,6 +289,7 @@ const CourseDetail: React.FC = () => {
                 {/* Phần bên phải: Danh sách khóa học mới nhất */}
                 <div className="col-md-4">
                     <h4 className="text-center mb-4">Khóa học mới nhất</h4>
+                    <hr className='text-black'></hr>
                     {latestCourses.map(course => (
                         <div key={course.id} className="card mb-3">
                             <img src={course.image} className="card-img-top" alt={course.title} />

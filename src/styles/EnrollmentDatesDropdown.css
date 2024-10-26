@@ -10,10 +10,21 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
 }
 
 .enrollment-date-item i {
     margin-right: 10px;
+}
+
+.enrollment-date-item:hover {
+    background-color: #f0f0f0; /* Màu nền hơi xám */
+    color: orange; /* Màu chữ cam */
+}
+
+.enrollment-date-item i:hover {
+    color: orange; /* Đổi màu icon sang cam khi hover */
 }
 
 .enrollment-date-text {

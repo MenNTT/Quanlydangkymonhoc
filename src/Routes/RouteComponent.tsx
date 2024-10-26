@@ -10,7 +10,7 @@ import Header from "../components/containers/header/Header.tsx";
 import NavbarComponent from "../components/containers/navbar/NavbarComponent.tsx";
 import Footer from "../components/containers/footer/Footer.tsx";
 import ClassroomActivities from "../components/classpage/ClassroomActivities.tsx";
-import OnlineClassroom from "../components/classpage/OnlineClassroom.tsx";
+import OnlineClassroom from "../components/classpage/onlineclassroom/OnlineClassroom.tsx";
 
 const RouteComponent: React.FC = () => {
     // Lấy thông tin về đường dẫn hiện tại

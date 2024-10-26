@@ -6,6 +6,12 @@
     padding: 5px;
 }
 
+.service-item:hover {
+    background-color: #f0f0f0; /* Màu nền hơi xám khi hover */
+    color: orange; /* Màu chữ cam khi hover */
+    cursor: pointer;
+}
+
 .service-item i {
     margin-right: 10px;
     font-size: 1.5rem;

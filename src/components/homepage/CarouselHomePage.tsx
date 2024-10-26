@@ -6,13 +6,40 @@ const CarouselHomePage: React.FC = () => {
             <div id="carouselExample" className="carousel slide">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img src="https://via.placeholder.com/800x200?text=First+Slide" className="d-block w-100" alt="..."/>
+                        <img src="../../../public/carousel/kiem-thu-phan-mem-co-ban-tu-dong-k299.png"
+                             className="d-block w-100" alt="..."/>
                     </div>
                     <div className="carousel-item">
-                        <img src="https://via.placeholder.com/800x200?text=Second+Slide" className="d-block w-100" alt="..."/>
+                        <img src="../../../public/carousel/lap-trinh-di-dong-da-nen-tang-flutter-k299.png"
+                             className="d-block w-100" alt="..."/>
                     </div>
                     <div className="carousel-item">
-                        <img src="https://via.placeholder.com/800x200?text=Third+Slide" className="d-block w-100" alt="..."/>
+                        <img src="../../../public/carousel/khai-giang-devops-k299.png"
+                             className="d-block w-100" alt="..."/>
+                    </div>
+                    <div className="carousel-item">
+                        <img src="../../../public/carousel/data-science-machine-learning-certificate-khtn-k293.png"
+                             className="d-block w-100" alt="..."/>
+                    </div>
+                    <div className="carousel-item">
+                        <img src="../../../public/carousel/computer-vision-deep-learning-k299.png"
+                             className="d-block w-100" alt="..."/>
+                    </div>
+                    <div className="carousel-item">
+                        <img src="../../../public/carousel/299-thiet-ke-nang-cao.jpg"
+                             className="d-block w-100" alt="..."/>
+                    </div>
+                    <div className="carousel-item">
+                        <img src="../../../public/carousel/299-canva-capcut.jpg"
+                             className="d-block w-100" alt="..."/>
+                    </div>
+                    <div className="carousel-item">
+                        <img src="../../../public/carousel/298-data-analysis.jpg"
+                             className="d-block w-100" alt="..."/>
+                    </div>
+                    <div className="carousel-item">
+                        <img src="../../../public/carousel/298-EXCEL.png"
+                             className="d-block w-100" alt="..."/>
                     </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample"
