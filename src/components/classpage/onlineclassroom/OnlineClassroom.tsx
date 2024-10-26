@@ -1,12 +1,24 @@
-import React, { useState, useRef } from 'react';
-import '../../styles/OnlineClassroom.css';
+import React, { useState, useRef, useEffect } from 'react';
+import '../../../styles/OnlineClassroom.css';
+import { User } from '../../../mock_data/mockUsers';
+import { useUser } from '../../contents/UserContext';
 
 const OnlineClassroom: React.FC = () => {
     const [activeTab, setActiveTab] = useState<'chat' | 'people'>('people');
     const [isCameraOn, setIsCameraOn] = useState(false);
+    const [users, setUsers] = useState<User[]>([]);
+    const [messages, setMessages] = useState<{ user: User; content: string }[]>([]);
+    const [message, setMessage] = useState('');
     const videoRef = useRef<HTMLVideoElement | null>(null);
+    const { user } = useUser();
 
-    // Xử lý bật camera
+    useEffect(() => {
+        const storedUsers = sessionStorage.getItem('onlineUsers');
+        if (storedUsers) {
+            setUsers(JSON.parse(storedUsers));
+        }
+    }, []);
+
     const handleToggleCamera = () => {
         if (isCameraOn) {
             setIsCameraOn(false);
@@ -27,9 +39,15 @@ const OnlineClassroom: React.FC = () => {
         }
     };
 
+    const handleSendMessage = () => {
+        if (message.trim() && user) {
+            setMessages([...messages, { user, content: message }]);
+            setMessage('');
+        }
+    };
+
     return (
         <div>
-            {/* Navigation */}
             <nav className="navbar navbar-light bg-light p-2">
                 <div className="container-fluid">
                     <div className="d-flex">
@@ -52,9 +70,7 @@ const OnlineClassroom: React.FC = () => {
                 </div>
             </nav>
 
-            {/* Main Content */}
             <div className="container-fluid main-content d-flex">
-                {/* Phần nội dung chính */}
                 <div className="content-area col-md-9 d-flex justify-content-center align-items-center text-white bg-dark">
                     {isCameraOn ? (
                         <video ref={videoRef} autoPlay playsInline className="w-100" style={{ maxWidth: '600px' }}></video>
@@ -63,32 +79,43 @@ const OnlineClassroom: React.FC = () => {
                     )}
                 </div>
 
-                {/* Sidebar */}
                 <div className="sidebar col-md-3 bg-white p-3">
                     {activeTab === 'chat' ? (
                         <div id="chatBox" className="chat-box">
                             <h5>Chat</h5>
                             <div className="messages mb-3" style={{ minHeight: '300px', overflowY: 'auto' }}>
-                                {/* Hiển thị tin nhắn */}
+                                {messages.map((msg, index) => (
+                                    <div key={index} className="d-flex align-items-start mb-2">
+                                        <img src="https://via.placeholder.com/30" alt="Avatar" className="rounded-circle me-2" />
+                                        <div>
+                                            <strong>{msg.user.name}</strong>
+                                            <p className="mb-0">{msg.content}</p>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-                            <input type="text" className="form-control mb-2" placeholder="Nhập tin nhắn..." />
-                            <button className="btn btn-primary w-100">Gửi</button>
+                            <div className="input-group chat-input">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Nhập tin nhắn..."
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                />
+                                <button className="btn btn-primary" type="button" onClick={handleSendMessage}>
+                                    <i className="bi bi-send"></i>
+                                </button>
+                            </div>
                         </div>
                     ) : (
                         <div id="userList" className="user-list">
                             <h5>Danh sách người dùng</h5>
-                            <div className="user mb-3 d-flex align-items-center">
-                                <img src="https://via.placeholder.com/50" className="user-avatar me-2" alt="User Avatar" />
-                                <span>User 1</span>
-                            </div>
-                            <div className="user mb-3 d-flex align-items-center">
-                                <img src="https://via.placeholder.com/50" className="user-avatar me-2" alt="User Avatar" />
-                                <span>User 2</span>
-                            </div>
-                            <div className="user mb-3 d-flex align-items-center">
-                                <img src="https://via.placeholder.com/50" className="user-avatar me-2" alt="User Avatar" />
-                                <span>User 3</span>
-                            </div>
+                            {users.map((user) => (
+                                <div key={user.id} className="user mb-3 d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/50" className="user-avatar me-2" alt="User Avatar" />
+                                    <span>{user.name}</span>
+                                </div>
+                            ))}
                         </div>
                     )}
                 </div>

@@ -1,17 +1,23 @@
+// Login.tsx
 import React, { useState } from 'react';
-import {useUser} from "../contents/UserContext.tsx";
-import {useNavigate} from "react-router-dom";
+import { useUser } from '../contents/UserContext.tsx';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState<string | null>(null);
     const { login } = useUser();
     const navigate = useNavigate();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        login(email); // Đăng nhập giả lập với email
-        navigate('/'); // Chuyển hướng về trang chủ sau khi đăng nhập
+        const success = login(email, password); // Check login success
+        if (success) {
+            navigate('/'); // Redirect to home page after login
+        } else {
+            setError('Invalid email or password'); // Set error message
+        }
     };
 
     return (
@@ -21,6 +27,7 @@ const Login: React.FC = () => {
                     <div className="card shadow-sm">
                         <div className="card-body">
                             <h4 className="card-title text-center mb-4">Login</h4>
+                            {error && <div className="alert alert-danger">{error}</div>} {/* Display error message */}
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
                                     <label htmlFor="email" className="form-label">

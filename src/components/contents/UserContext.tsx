@@ -1,24 +1,10 @@
+// UserContext.tsx
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { User, mockUsers } from '../../mock_data/mockUsers';
 
 interface UserContextType {
-    user: {
-        email: string;
-        fullName: string;
-        idNumber: string;
-        phone: string;
-        address: string;
-        companyName: string;
-        companyAddress: string;
-    } | null;
-    login: (
-        email: string,
-        fullName: string,
-        idNumber: string,
-        phone: string,
-        address: string,
-        companyName: string,
-        companyAddress: string
-    ) => void;
+    user: User | null;
+    login: (email: string, password: string) => boolean; // Return boolean for login success
     logout: () => void;
 }
 
@@ -33,15 +19,7 @@ export const useUser = () => {
 };
 
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [user, setUser] = useState<{
-        email: string;
-        fullName: string;
-        idNumber: string;
-        phone: string;
-        address: string;
-        companyName: string;
-        companyAddress: string;
-    } | null>(null);
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
         const storedUser = sessionStorage.getItem('user');
@@ -50,18 +28,16 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
     }, []);
 
-    const login = (
-        email: string,
-        fullName: string,
-        idNumber: string,
-        phone: string,
-        address: string,
-        companyName: string,
-        companyAddress: string
-    ) => {
-        const userData = { email, fullName, idNumber, phone, address, companyName, companyAddress };
-        setUser(userData);
-        sessionStorage.setItem('user', JSON.stringify(userData));
+    const login = (email: string, password: string): boolean => {
+        const foundUser = mockUsers.find(user => user.email === email && user.password === password);
+        if (foundUser) {
+            setUser(foundUser);
+            sessionStorage.setItem('user', JSON.stringify(foundUser));
+            return true;
+        } else {
+            console.error('Invalid email or password');
+            return false;
+        }
     };
 
     const logout = () => {

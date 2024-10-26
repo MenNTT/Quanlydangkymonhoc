@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
 import { FaClipboardList, FaPlus } from 'react-icons/fa';
 import AssignmentForm from './AssignmentForm';
-
-interface Assignment {
-    id: number;
-    title: string;
-    dueDate: string;
-    description: string;
-    status: 'upcoming' | 'pastDue' | 'completed';
-    files?: File[];
-}
+import { Assignment } from '../../mock_data/mockAssignment';
 
 interface AssignmentListProps {
     assignments: Assignment[];
@@ -82,7 +74,7 @@ const AssignmentList: React.FC<AssignmentListProps> = ({ assignments, setAssignm
 
             <div style={{ marginTop: '100px', zIndex: '0', height: 'calc(100vh - 100px)', overflowY: 'auto' }}>
                 {filteredAssignments.length === 0 ? (
-                    <p>No assignments in this category.</p>
+                    <p style={{ marginTop: '40vh', marginLeft: '30vw' }}>No assignments in this category.</p>
                 ) : (
                     <ul className="list-group">
                         {filteredAssignments.map((assignment) => (

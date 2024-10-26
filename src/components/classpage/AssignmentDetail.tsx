@@ -1,24 +1,35 @@
-import React, { useState } from 'react';
+// src/components/classpage/AssignmentDetail.tsx
+
+import React, { useState, useEffect } from 'react';
 import { FaArrowLeft, FaPaperclip, FaCheckCircle } from 'react-icons/fa';
+import { Assignment } from '../../mock_data/mockAssignment';
+import { useUser } from '../contents/UserContext';
+import { mockSubmissions, Submission } from '../../mock_data/mockSubmission';
 
 interface AssignmentDetailProps {
-    assignment: {
-        id: number;
-        title: string;
-        dueDate: string;
-        description: string;
-        status: 'upcoming' | 'pastDue' | 'completed';
-        files?: File[];
-    };
+    assignment: Assignment;
     onBack: () => void;
     onUpdateStatus: (id: number, status: 'upcoming' | 'pastDue' | 'completed') => void;
 }
 
 const AssignmentDetail: React.FC<AssignmentDetailProps> = ({ assignment, onBack, onUpdateStatus }) => {
+    const { user } = useUser();
     const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
     const [isTurnedIn, setIsTurnedIn] = useState(false);
     const [turnInTime, setTurnInTime] = useState<Date | null>(null);
     const [fileName, setFileName] = useState<string | null>(null);
+
+    useEffect(() => {
+        const existingSubmission = mockSubmissions.find(
+            (submission) => submission.id_assignment === assignment.id && submission.id_user === user!.id
+        );
+        if (existingSubmission) {
+            setIsTurnedIn(true);
+            setTurnInTime(new Date(existingSubmission.submissionTime));
+            setAttachedFiles([existingSubmission.file]);
+            setFileName(existingSubmission.file.name);
+        }
+    }, [assignment.id, user]);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
@@ -39,6 +50,14 @@ const AssignmentDetail: React.FC<AssignmentDetailProps> = ({ assignment, onBack,
             setTurnInTime(null);
             onUpdateStatus(assignment.id, 'upcoming');
         } else {
+            const submission: Submission = {
+                id_assignment: assignment.id,
+                id_user: user!.id,
+                file: attachedFiles[0],
+                submissionTime: new Date().toISOString(),
+            };
+            mockSubmissions.push(submission);
+
             setIsTurnedIn(true);
             setTurnInTime(new Date());
             onUpdateStatus(assignment.id, 'completed');

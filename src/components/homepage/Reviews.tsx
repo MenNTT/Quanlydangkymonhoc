@@ -1,57 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-interface Review {
-    avatar: string;
-    name: string;
-    job: string;
-    comment: string;
-}
-
-const reviews: Review[] = [
-    {
-        avatar: "https://via.placeholder.com/80",
-        name: "Nguyen Van A",
-        job: "Lập trình viên",
-        comment: "Khóa học rất bổ ích và thú vị. Giảng viên nhiệt tình!"
-    },
-    {
-        avatar: "https://via.placeholder.com/80",
-        name: "Tran Thi B",
-        job: "Nhân viên văn phòng",
-        comment: "Mình đã học rất nhiều từ khóa học này. Rất hài lòng!"
-    },
-    {
-        avatar: "https://via.placeholder.com/80",
-        name: "Le Thi C",
-        job: "Sinh viên",
-        comment: "Khóa học đã giúp mình hiểu rõ hơn về lập trình."
-    },
-    {
-        avatar: "https://via.placeholder.com/80",
-        name: "Pham Van D",
-        job: "Giáo viên",
-        comment: "Cách giảng dạy rất dễ hiểu, thích hợp cho người mới bắt đầu."
-    },
-    {
-        avatar: "https://via.placeholder.com/80",
-        name: "Nguyen Van E",
-        job: "Kỹ sư phần mềm",
-        comment: "Rất đáng giá, nội dung rất chất lượng."
-    },
-    {
-        avatar: "https://via.placeholder.com/80",
-        name: "Tran Van F",
-        job: "Nhân viên kế toán",
-        comment: "Mình cảm thấy khóa học này rất hữu ích cho công việc của mình."
-    },
-    {
-        avatar: "https://via.placeholder.com/80",
-        name: "Le Van G",
-        job: "Quản lý dự án",
-        comment: "Cảm ơn khóa học đã giúp mình nâng cao kiến thức chuyên môn."
-    },
-];
+import { Review, mockReviews } from "../../mock_data/mockReviews";
 
 const chunkArray = (array: Review[], chunkSize: number) => {
     const results: Review[][] = [];
@@ -63,7 +12,7 @@ const chunkArray = (array: Review[], chunkSize: number) => {
 
 const Reviews: React.FC = () => {
     // Chia các reviews thành các nhóm nhỏ (4 đánh giá mỗi nhóm)
-    const reviewChunks = chunkArray(reviews, 4);
+    const reviewChunks = chunkArray(mockReviews, 4);
 
     return (
         <div className="container-fluid d-flex flex-column align-items-center py-5"
@@ -73,7 +22,7 @@ const Reviews: React.FC = () => {
                  backgroundSize: "cover",  // Làm cho ảnh phủ hết toàn bộ phần nền
                  backgroundPosition: "center",  // Căn giữa hình ảnh
                  backgroundRepeat: "no-repeat",  // Không lặp lại ảnh
-            }}
+             }}
         >
             {/* Tiêu đề */}
             <h2 className="text-center mb-4">Cảm nhận của học viên</h2>

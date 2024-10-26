@@ -45,7 +45,7 @@ const EnrollmentDatesDropdown: React.FC<{ isOpen: boolean; onClose: () => void }
                                     <i className="bi bi-book" style={{ fontSize: '1.5rem', marginRight: '10px' }}></i>
                                     <div className="enrollment-date-text">
                                         <small className="d-block">{entry.date}</small>
-                                        <span>{entry.course}</span>
+                                        <span><b>{entry.course}</b></span>
                                     </div>
                                 </div>
                             ))}
